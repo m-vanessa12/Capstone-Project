@@ -14,6 +14,7 @@ const displayDiscussion = async (req, res) => {
         for (const discussion of discussions) {
             const comments = await Comment.find({ discussion: discussion._id }).populate('user');
             const commentCount = await Comment.countDocuments({ discussion: discussion._id });
+            const likesCount = discussion.likesCount || 0;
 
             let createdBy = {
                 name: discussion.createdBy.firstName + ' ' + discussion.createdBy.lastName,
@@ -63,6 +64,7 @@ const displayDiscussion = async (req, res) => {
                 createdAt: discussion.createdAt,
                 createdBy: createdBy,
                 commentCount: commentCount,
+                likesCount: likesCount,
                 comments: formattedComments
             };
 
