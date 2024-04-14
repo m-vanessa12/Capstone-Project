@@ -59,7 +59,6 @@ router.post('/:menteeId/notify-interest', verifyToken, Interest.postInterest);
 router.get('/mentee-notifications/:menteeId', verifyToken, GetMenteeInterests.getMenteeInterests);
 
 
-
 //DISCUSSION BOARD 
 router.post('/discussion', verifyToken, discussinContent.CreateDiscussion)
 router.get ('/forum', discusionForum.displayDiscussion)
