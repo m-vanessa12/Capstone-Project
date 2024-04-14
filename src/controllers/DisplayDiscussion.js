@@ -12,7 +12,7 @@ const displayDiscussion = async (req, res) => {
 
         const formattedDiscussions = [];
         for (const discussion of discussions) {
-            const comments = await Comment.find({ discussion: discussion._id }).populate('user');
+            const comments = await Comment.find({ discussion: discussion._id }).populate('user').sort({ createdAt: -1 });
             const commentCount = await Comment.countDocuments({ discussion: discussion._id });
             const likesCount = discussion.likesCount || 0;
 
